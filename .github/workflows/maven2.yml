@@ -34,7 +34,8 @@ jobs:
     runs-on:  macos-latest
     needs:  build
     steps:
-    - uses: ls -laRt
+    - name: Dummy for Deploy Artifact
+    - run: ls -lart
     
       
       
