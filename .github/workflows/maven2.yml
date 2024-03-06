@@ -54,5 +54,13 @@ jobs:
         port: 22
         source: '*.jar'
         target: /tmp/
-    
+
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASS }}
+        port: 22
+        script: whoami | ls -a
       
