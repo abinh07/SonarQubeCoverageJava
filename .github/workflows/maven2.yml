@@ -37,7 +37,7 @@ jobs:
 
     strategy:
       matrix:
-        deplyHosts: ['34.227.176.180', '23.23.33.230']
+        deplyHosts: ${{ vars.HOSTLIST }}
     
     steps:
     - name: 'Upload Artifact'
