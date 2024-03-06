@@ -34,6 +34,10 @@ jobs:
   
     runs-on: ubuntu-latest
     needs: build
+
+    strategy:
+      matrix:
+        deplyHosts: ['34.227.176.180', '23.23.33.230']
     
     steps:
     - name: 'Upload Artifact'
@@ -41,8 +45,14 @@ jobs:
       with:
         name: buildartifact
         path: target/*.jar
+
+    - name: 'Download Artifact'
+      uses: actions/download-artifact@v4
+      with:
+        name: buildartifact
+        path: .
         
-    - name: 'Dummy for Deploy Artifact'
+    - name: 'Deploy Artifact'
       run: ls -lart
     
     - name: copy file to server
@@ -62,5 +72,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASS }}
         port: 22
-        script: whoami | ls -a 
+        script: | 
+          sudo cp /tmp*.jar /opt/
+          sudo ls -lart /opt
       
