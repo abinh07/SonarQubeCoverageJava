@@ -45,5 +45,14 @@ jobs:
     - name: 'Dummy for Deploy Artifact'
     - run: ls -lart
     
-      
+    - name: copy file to server
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASS }}
+        port: 22
+        source: '*.jar'
+        target: /tmp/
+    
       
