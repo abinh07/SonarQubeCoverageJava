@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: SalesforceAdvancedDay3
 
 on:
   push:
@@ -43,7 +43,7 @@ jobs:
         path: target/*.jar
         
     - name: 'Dummy for Deploy Artifact'
-    - run: ls -lart
+      run: ls -lart
     
     - name: copy file to server
       uses: appleboy/scp-action@v0.1.7
