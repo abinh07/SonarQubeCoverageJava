@@ -58,7 +58,7 @@ jobs:
     - name: copy file to server
       uses: appleboy/scp-action@v0.1.7
       with:
-        host: ${{ secrets.HOST }}
+        host: ${{ matrix.deployHosts }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASS }}
         port: 22
@@ -68,7 +68,7 @@ jobs:
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@v1.0.3
       with:
-        host: ${{ secrets.HOST }}
+        host: ${{ matrix.deployHosts }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASS }}
         port: 22
