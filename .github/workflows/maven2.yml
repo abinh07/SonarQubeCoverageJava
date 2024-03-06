@@ -37,7 +37,7 @@ jobs:
 
     strategy:
       matrix:
-        deplyHosts: ${{ vars.HOSTLIST }}
+        deployHosts: ${{ fromJson(vars.HOSTLIST) }}
     
     steps:
     - name: 'Upload Artifact'
